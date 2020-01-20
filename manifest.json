@@ -1,0 +1,33 @@
+{
+  "name": "Websites Background Changer",
+  "description": "Change the websites' background to any images.",
+  "version": "1.2",
+  "permissions": ["contextMenus", "storage", "unlimitedStorage", "tabs"],
+  "icons": {
+      "16": "icon16.png",
+      "48": "icon48.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+      "default_popup": "popup.html"
+  },
+  "content_scripts": [ {
+          "matches": ["<all_urls>"],
+          "all_frames": false,
+          "js": [
+              "jquery.min.js",
+              "content_script.js"
+          ]
+      }, {
+          "matches": ["file:///*"],
+          "all_frames": false,
+          "js": [
+              "jquery.min.js",
+              "file.js"
+          ]
+      }
+  ],
+  "manifest_version": 2
+}
