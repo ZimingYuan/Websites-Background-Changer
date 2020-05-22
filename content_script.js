@@ -8,8 +8,13 @@ $(document).ready(() => {
         let ctx = canvas.getContext('2d');
         let img = new Image(); img.src = url;
         img.onload = () => {
-            ctx.scale(canvas.width / img.width, canvas.height / img.height);
-            ctx.drawImage(img, 0, 0);
+            let midx = img.width / 2, midy = img.height / 2;
+            let imgscale = Math.max(canvas.width / 2 / midx,
+                                    canvas.width / 2 / (img.width - midx),
+                                    canvas.height / 2 / midy,
+                                    canvas.height / 2 / (img.height - midy));
+            ctx.scale(imgscale, imgscale);
+            ctx.drawImage(img, canvas.width / 2 - midx * imgscale, canvas.height / 2 - midy * imgscale);
         };
     }
 
@@ -28,7 +33,7 @@ $(document).ready(() => {
         if (data.ExtensionOn) ExtensionOn();
     });
     chrome.runtime.onMessage.addListener((msg, _1, _2) => {
-        if (msg == 'ExtensionOn') {
+        if (msg == 'ExtensionOn' || msg == 'ImgSrc') {
             chrome.storage.local.get('ExtensionOn', (data) => {
                 if ($('#BackgroundExt').length > 0) $('#BackgroundExt').remove();
                 if (data.ExtensionOn) ExtensionOn();
