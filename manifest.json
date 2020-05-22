@@ -1,7 +1,7 @@
 {
   "name": "Websites Background Changer",
   "description": "Change the websites' background to any images.",
-  "version": "1.3",
+  "version": "2.0",
   "permissions": ["contextMenus", "storage", "unlimitedStorage", "tabs"],
   "icons": {
       "16": "icon16.png",
