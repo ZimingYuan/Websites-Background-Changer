@@ -27,3 +27,11 @@ Sorry, I don't have a chrome developer account. So you can only load the addon f
 ### Pictures
 
 ![example](example.png)
+
+### Update 2020.5.22
+
+Now the script will try to crop the background image to ensure that the picture resolution is correct first.
+And fix the bug that the picture cannot be updated in real time.
+
+现在脚本会对背景图片进行适当的裁剪以优先保证图片分辨率的正确。
+同时修改了图片不能实时更新的漏洞。
